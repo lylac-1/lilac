@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "lilac",
+  "version": "${version}",
+  "name": "Lilac",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/lilac/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "dev.lylac.lilac.Lilac"
+    ]
+  },
+  "mixins": [
+    "lilac.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}
