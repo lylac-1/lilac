@@ -1,20 +1,16 @@
 package dev.lylac.lilac.settings;
 
 public class setting {
-    private String name;
+    // values
+    private final String name;
     private boolean visible = true;
-
-    public boolean isVisible() {
-        return visible;
-    }
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-    public String getName() {
-        return name;
-    }
-
+    // constructor
     public setting(String name) {
         this.name = name;
     }
+    // setters
+    public void setVisible(boolean visible) {this.visible = visible;}
+    // getters
+    public boolean isVisible() {return visible;}
+    public String getName() {return name;}
 }

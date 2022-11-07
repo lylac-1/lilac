@@ -4,48 +4,38 @@ import java.util.Arrays;
 import java.util.List;
 
 public class settingMode extends setting {
+    // values
     private String mode;
-    private List<String> modes;
+    private final List<String> modes;
     private int index;
+    // constructor
     public settingMode(String name, String defaultMode, String... modes) {
         super(name);
         this.mode = defaultMode;
         this.modes = Arrays.asList(modes);
         this.index = this.modes.indexOf(defaultMode);
     }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public List<String> getModes() {
-        return this.modes;
-    }
-
+    // setters
     public void setMode(String mode) {
         this.mode = mode;
         this.index = modes.indexOf(mode);
     }
-
-    public int getIndex() {
-        return index;
-    }
-
     public void setIndex(int index) {
         this.index = index;
         this.mode = modes.get(index);
     }
-
+    // getters
     public void cycle() {
         if (index < modes.size() - 1) {
             index++;
             mode = modes.get(index);
-        } else if (index >= modes.size() -1) {
+        } else if (index >= modes.size() - 1) {
             index = 0;
             mode = modes.get(0);
         }
     }
-    public boolean inMode(String mode) {
-        return this.mode == mode;
-    }
+    public String getMode() {return mode;}
+    public List<String> getModes() {return this.modes;}
+    public int getIndex() {return index;}
+    public boolean inMode(String mode) {return this.mode.equals(mode);}
 }

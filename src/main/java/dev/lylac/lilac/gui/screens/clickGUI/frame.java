@@ -13,11 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class frame {
+    // values
     public int x, y, width, height, dragX, dragY;
     public Category category;
     public boolean dragging;
     public boolean extended;
-    private List<modButton> buttons;
+    private final List<modButton> buttons;
+    protected MinecraftClient clientInstance = MinecraftClient.getInstance();
+    // constructor
     public frame(Category category, int x, int y, int width, int height) {
         this.category = category;
         this.x = x;
@@ -26,18 +29,14 @@ public class frame {
         this.height = height;
         this.dragging = false;
         this.extended = false;
-
-        buttons = new ArrayList<modButton>();
-
+        buttons = new ArrayList<>();
         int offset = height;
         for(mod m : modManager.INSTANCE.getModsInCategory(category)) {
             buttons.add(new modButton(m, this, offset));
             offset += height;
         }
     }
-
-    protected MinecraftClient clientInstance = MinecraftClient.getInstance();
-
+    // methods
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         DrawableHelper.fill(matrices, x, y, x +width, y + height, Color.blue.getRGB());
         String catName = category.name + (extended ? "  -" : "  +");
@@ -50,7 +49,6 @@ public class frame {
             }
         }
     }
-
     public void mouseClicked(double mouseX, double mouseY, int button) {
         if (isHovered(mouseX, mouseY)) {
             if(button == 0) {
@@ -67,25 +65,18 @@ public class frame {
             }
         }
     }
-
     public void mouseReleased(double mouseX, double mouseY, int button) {
-        if (button == 0 && dragging == true) dragging = false;
+        if (button == 0 && dragging) dragging = false;
         for (modButton mb : buttons) {
             mb.mouseReleased(mouseX, mouseY, button);
         }
     }
-
-    public boolean isHovered(double mouseX, double mouseY) {
-        return mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height;
-    }
-
     public void updatePosition(double mouseX, double mouseY) {
         if (dragging) {
             x = (int)mouseX - dragX;
             y = (int)mouseY - dragY;
         }
     }
-
     public void updateButtons() {
         int offset = height;
         for (modButton button : buttons) {
@@ -93,9 +84,12 @@ public class frame {
             offset += height;
             if (button.extended) {
                 for (component c : button.components) {
-                    if (c.s.isVisible()) offset += height;
+                    if (c.setting.isVisible()) offset += height;
                 }
             }
         }
+    }
+    public boolean isHovered(double mouseX, double mouseY) {
+        return mouseX > x && mouseX < x + width && mouseY > y && mouseY < y + height;
     }
 }

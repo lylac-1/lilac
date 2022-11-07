@@ -7,47 +7,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class mod {
-    private String name;
-    private String description;
-    private Category category;
+    // values
+    private final String name;
+    private final String description;
+    private final Category category;
     private int key;
     private boolean enabled;
-
-    private List<setting> settings = new ArrayList<>();
-
+    protected final MinecraftClient clientInstance = MinecraftClient.getInstance();
+    private final List<setting> settings = new ArrayList<>();
     public enum Category {
         MOVEMENT("Movement"),
         RENDER("Render");
-        public String name;
+        public final String name;
         Category(String name) {
             this.name = name;
         }
     }
-
-    protected MinecraftClient clientInstance = MinecraftClient.getInstance();
-
+    // constructor
     public mod(String name, String description, Category category) {
         this.name = name;
         this.description = description;
         this.category = category;
     }
 
-    public List<setting> getSettings() {
-        return settings;
-    }
-    public void addSetting(setting s) {
-        settings.add(s);
-    }
-    public void addSettings(setting... sc) {
-        for (setting s : sc) addSetting(s);
-    }
-    
-    // template functions, no need to do anything by default
+    // template functions
     public void onTick() {}
     public void onEnable() {}
     public void onDisable() {}
     
-    // setters
+    // setters / updaters
+    public void addSetting(setting setting) {
+        settings.add(setting);
+    }
+    public void addSettings(setting... settings) {
+        for (setting setting : settings) {
+            addSetting(setting);
+        }
+    }
     public void setKey(int key) {this.key = key;}
 
     public void toggle() {
@@ -65,7 +61,7 @@ public class mod {
     public Category getCategory() {return this.category;}
     public int getKey() {return this.key;}
     public boolean isEnabled() {return enabled;}
-    
+    public List<setting> getSettings() {return settings;}
     
     
 }

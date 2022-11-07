@@ -10,6 +10,7 @@ public class sprint extends mod {
     }
     @Override
     public void onTick() {
+        assert clientInstance.player != null;
         clientInstance.player.setSprinting(true);
         super.onTick();
     }
