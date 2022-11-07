@@ -47,4 +47,8 @@ public class clickGUI extends Screen{
         }
         return super.mouseReleased(mouseX, mouseY, button);
     }
+    @Override
+    public boolean shouldPause() {
+        return false;
+    }
 }
