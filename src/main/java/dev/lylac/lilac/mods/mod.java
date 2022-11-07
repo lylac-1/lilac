@@ -29,7 +29,7 @@ public class mod {
     public void onDisable() {}
     
     // setters
-    public void setKey(int Key) {this.key = key;}
+    public void setKey(int key) {this.key = key;}
 
     public void toggle() {
         this.enabled = !this.enabled;

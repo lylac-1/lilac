@@ -1,5 +1,7 @@
 package dev.lylac.lilac.mods;
 
+import dev.lylac.lilac.mods.movement.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class modManager {
 
     public void addMods() {
         mods.add(new boatFly());
+        mods.add(new sprint());
         System.out.println("mods added");
     }
 

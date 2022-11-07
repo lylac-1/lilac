@@ -1,5 +1,6 @@
-package dev.lylac.lilac.mods;
+package dev.lylac.lilac.mods.movement;
 
+import dev.lylac.lilac.mods.mod;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;

@@ -26,7 +26,7 @@ public class Lilac implements ModInitializer {
         }
     }
     public void onTick() {
-        if (clientInstance.player == null) {
+        if (clientInstance.player != null) {
             for(mod m : modManager.INSTANCE.getEnabledMods()) {
                 m.onTick();
             }
