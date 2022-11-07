@@ -12,10 +12,17 @@ public class boatFly extends mod {
     }
     @Override
     public void onTick() {
-        if(clientInstance.player.hasVehicle()) {
+        if(clientInstance.player.getVehicle() != null) {
             Entity vehicle = clientInstance.player.getVehicle();
             Vec3d velocity = vehicle.getVelocity();
-            double motionY = clientInstance.options.jumpKey.isPressed() ? 0.5 : 0;
+            double motionY;
+            if(clientInstance.options.jumpKey.isPressed()) {
+                motionY = 0.5;
+            } else if(clientInstance.options.sprintKey.isPressed()) {
+                motionY = -0.5;
+            } else {
+                motionY = 0.04;
+            }
             vehicle.setVelocity(new Vec3d(velocity.x, motionY, velocity.z));
         }
         super.onTick();

@@ -1,5 +1,6 @@
 package dev.lylac.lilac;
 
+import dev.lylac.lilac.gui.screens.clickGUI.clickGUI;
 import dev.lylac.lilac.mods.mod;
 import dev.lylac.lilac.mods.modManager;
 import net.fabricmc.api.ModInitializer;
@@ -23,6 +24,8 @@ public class Lilac implements ModInitializer {
             for (mod m : modManager.INSTANCE.getMods()) {
                 if (key == m.getKey()) m.toggle();
             }
+
+            if (key == GLFW.GLFW_KEY_RIGHT_SHIFT) clientInstance.setScreen(clickGUI.INSTANCE);
         }
     }
     public void onTick() {

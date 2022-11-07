@@ -10,8 +10,12 @@ public class mod {
     private boolean enabled;
 
     public enum Category {
-        MOVEMENT,
-        RENDER
+        MOVEMENT("Movement"),
+        RENDER("Render");
+        public String name;
+        Category(String name) {
+            this.name = name;
+        }
     }
 
     protected MinecraftClient clientInstance = MinecraftClient.getInstance();
