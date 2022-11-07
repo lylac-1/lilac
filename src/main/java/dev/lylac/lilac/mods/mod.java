@@ -1,6 +1,10 @@
 package dev.lylac.lilac.mods;
 
+import dev.lylac.lilac.settings.setting;
 import net.minecraft.client.MinecraftClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class mod {
     private String name;
@@ -8,6 +12,8 @@ public class mod {
     private Category category;
     private int key;
     private boolean enabled;
+
+    private List<setting> settings = new ArrayList<>();
 
     public enum Category {
         MOVEMENT("Movement"),
@@ -24,7 +30,16 @@ public class mod {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.key = 0;
+    }
+
+    public List<setting> getSettings() {
+        return settings;
+    }
+    public void addSetting(setting s) {
+        settings.add(s);
+    }
+    public void addSettings(setting... sc) {
+        for (setting s : sc) addSetting(s);
     }
     
     // template functions, no need to do anything by default

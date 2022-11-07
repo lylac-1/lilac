@@ -14,6 +14,7 @@ public class modManager {
     public void addMods() {
         mods.add(new boatFly());
         mods.add(new sprint());
+        mods.add(new flight());
         System.out.println("mods added");
     }
 
@@ -31,5 +32,14 @@ public class modManager {
            if(m.isEnabled()) enabled.add(m);
         }
         return enabled;
+    }
+    public List<mod> getModsInCategory(mod.Category category) {
+        List<mod> categoryModules = new ArrayList<>();
+        for (mod m : mods) {
+            if (m.getCategory() == category) {
+                categoryModules.add(m);
+            }
+        }
+        return categoryModules;
     }
 }

@@ -19,7 +19,7 @@ public class clickGUI extends Screen{
         frames = new ArrayList<>();
         int offset = 20;
         for (Category c : Category.values()) {
-            frames.add(new frame(c, offset, 30, 100, 30));
+            frames.add(new frame(c, offset, 20, 100, 20));
             offset += 120;
         }
     }
@@ -28,6 +28,7 @@ public class clickGUI extends Screen{
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         for (frame f : frames) {
             f.render(matrices, mouseX, mouseY, delta);
+            f.updatePosition(mouseX, mouseY);
         }
         super.render(matrices, mouseX, mouseY, delta);
     }
@@ -39,4 +40,11 @@ public class clickGUI extends Screen{
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        for (frame f : frames) {
+            f.mouseReleased(mouseX, mouseY, button);
+        }
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
 }
