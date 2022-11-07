@@ -70,6 +70,9 @@ public class frame {
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
         if (button == 0 && dragging == true) dragging = false;
+        for (modButton mb : buttons) {
+            mb.mouseReleased(mouseX, mouseY, button);
+        }
     }
 
     public boolean isHovered(double mouseX, double mouseY) {

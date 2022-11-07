@@ -33,6 +33,7 @@ public class modButton {
             } else if (s instanceof settingNumber) {
                 components.add(new slider(s, this, setOffset));
             }
+            setOffset += parent.height;
         }
     }
 

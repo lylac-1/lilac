@@ -6,7 +6,7 @@ import dev.lylac.lilac.settings.settingMode;
 import dev.lylac.lilac.settings.settingNumber;
 
 public class flight extends mod {
-    public settingNumber speed = new settingNumber("Speed", 0, 100, 1, 1);
+    public settingNumber speed = new settingNumber("Speed", 0, 100, 50, 1);
     public settingBoolean testbool = new settingBoolean("Check", true);
     public settingMode testmode = new settingMode("mode", "test", "test2", "test3");
     public flight() {

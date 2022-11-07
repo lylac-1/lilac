@@ -2,12 +2,15 @@ package dev.lylac.lilac.gui.screens.clickGUI.setting;
 
 import dev.lylac.lilac.gui.screens.clickGUI.modButton;
 import dev.lylac.lilac.settings.setting;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
 public class component {
     public setting s;
     public modButton p;
     public int offset;
+
+    protected MinecraftClient clientInstance = MinecraftClient.getInstance();
 
     public component(setting s, modButton p, int offset) {
         this.s = s;
